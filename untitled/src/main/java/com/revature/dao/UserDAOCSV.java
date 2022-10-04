@@ -7,11 +7,12 @@ import java.io.IOException;
 
 
 public class UserDAOCSV implements UserDAO{
-    String line = "";
-    String splitBy = ",";
+
 
     @Override
     public Users getByEmail(String email) {
+        String line = "";
+        String splitBy = ",";
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/main/resources/users.csv"));
 
@@ -31,6 +32,11 @@ public class UserDAOCSV implements UserDAO{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Users createUser(String first, String last, String email, String password, Boolean isManager) {
         return null;
     }
 }

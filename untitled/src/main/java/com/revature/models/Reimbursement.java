@@ -10,7 +10,7 @@ public class Reimbursement {
     private String description;
     private Boolean status;
 
-    public Reimbursement(int id, int employee_id, float cost, String description, Boolean status) {
+    public Reimbursement(int employee_id, float cost, String description, Boolean status) {
         this.id = id;
         this.employee_id = employee_id;
         this.cost = cost;
@@ -20,6 +20,12 @@ public class Reimbursement {
 
     public Reimbursement() {
     }
+
+    public Reimbursement(int id, int employee_id) {
+        this.id = id;
+        this.employee_id = employee_id;
+    }
+
 
     public int getId() {
         return id;

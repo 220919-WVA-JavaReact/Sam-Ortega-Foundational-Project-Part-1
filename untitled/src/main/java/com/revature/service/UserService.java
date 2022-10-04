@@ -3,20 +3,52 @@ import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOCSV;
 import com.revature.models.Users;
 
+import java.util.Scanner;
+
 
 public class UserService {
 
     UserDAO userD = (UserDAO) new UserDAOCSV();
 
-    public void login(String email, String password){
+    Scanner sc = new Scanner(System.in);
+    public Users login(){
+
+        System.out.println("Please enter your email");
+        String email = sc.nextLine();
+        System.out.println("Please enter your password");
+        String password = sc.nextLine();
 
         Users user = userD.getByEmail(email);
+
         if (user.getPassword().equals(password)) {
             System.out.println("Welcome Back.");
             System.out.println(user);
+            return user;
         } else {
             System.out.println("You have not created an account with us.");
+            return null;
         }
+    }
+
+    public Users register(){
+        System.out.println("Please enter your First Name");
+        String first = sc.nextLine();
+        System.out.println("Please enter your Last Name");
+        String last = sc.nextLine();
+        System.out.println("Please enter your email");
+        String email = sc.nextLine();
+        System.out.println("Please enter your password");
+        String password = sc.nextLine();
+        System.out.println("Are you a manager? Type True or False.");
+        Boolean isManager = Boolean.valueOf(sc.nextLine());
+
+        // Now we've taken in the information regarding the actual user we're trying to create and now we need to send
+        // that info to the DAO
+
+        // Now that we created the DAO method we just need to call it with the info provided
+        Users user = userD.createUser(first, last, email, password, isManager);
+
+        return user;
     }
 
 }
