@@ -7,7 +7,19 @@ public class Main {
 
     public static UserService us = new UserService();
     public static void main(String[] args) {
-        System.out.println("Press 1 to Login. Press 2 to register.");
+        System.out.println("   ____________________"+
+        "\n  / ================== \\"+
+        "\n /______________________\\"+
+       "\n| ______________________ |"+
+        "\n| |                    | |"+
+        "\n| |Press 1 to Login.   | |"+
+        "\n| |                    | |"+
+        "\n| |Press 2 to register.| |"+
+        "\n| |____________________| |"+
+       "\n\\_=______________________/" +
+       "\n /\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\" \\"+
+        "\n/:::::::::::::::::::::::: \\"+
+       "\n(___________________________)");
 
         Scanner sc = new Scanner(System.in);
 
