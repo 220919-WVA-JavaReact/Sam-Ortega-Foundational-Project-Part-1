@@ -27,6 +27,21 @@ public class Users {
         this.isManager = isManager;
     }
 
+    public Users(String first, String last, String email, String password) {
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Users(int id, String first, String last, String email, String password) {
+        this.id = id;
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
+    }
+
     public Users() {
     }
 

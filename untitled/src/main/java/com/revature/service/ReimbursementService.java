@@ -23,10 +23,10 @@ public class ReimbursementService {
         System.out.println("Enter description: ");
         String description = sc.nextLine();
 
-        System.out.println("Are you a manager?");
-        Boolean isManager = Boolean.valueOf(sc.nextLine());
+//        System.out.println("Are you a manager?");
+        Boolean status = false;
 
-        Reimbursement ticket = rd.createReimbursement(user, cost, description, isManager);
+        Reimbursement ticket = rd.createReimbursement(user, cost, description, status);
         return ticket;
     }
 

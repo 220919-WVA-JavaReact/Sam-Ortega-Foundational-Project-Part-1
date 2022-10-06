@@ -2,6 +2,7 @@ package com.revature.service;
 import com.revature.dao.UserDAO;
 //import com.revature.dao.UserDAOCSV;
 import com.revature.dao.UserDAOPostgres;
+import com.revature.dao.ValidationDAO;
 import com.revature.models.Users;
 
 
@@ -38,12 +39,16 @@ public class UserService {
         String first = sc.nextLine();
         System.out.println("Please enter your Last Name");
         String last = sc.nextLine();
-        System.out.println("Please enter your email");
-        String email = sc.nextLine();
+        String email = null;
+        Boolean validate = false;
+        while (!validate){
+            System.out.println("Please enter your email");
+            email = sc.nextLine();
+            validate = ValidationDAO.validateEmail(email);
+        }
         System.out.println("Please enter your password");
         String password = sc.nextLine();
-        System.out.println("Are you a manager? Type True or False.");
-        Boolean isManager = Boolean.valueOf(sc.nextLine());
+        Boolean isManager = false;
 
         // Now we've taken in the information regarding the actual user we're trying to create and now we need to send
         // that info to the DAO
