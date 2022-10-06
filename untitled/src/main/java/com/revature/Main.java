@@ -3,6 +3,9 @@ package com.revature;
 import com.revature.models.Users;
 import com.revature.service.ReimbursementService;
 import com.revature.service.UserService;
+import com.revature.util.ConnectionUtil;
+
+import java.sql.Connection;
 import java.util.Scanner;
 public class Main {
 
@@ -59,6 +62,8 @@ public class Main {
             loggedInUser = us.register();
 
             // Now that we have all the information we need we can start talking to our TeacherService class to handle this info
+        }else if (choice.equals("3")){
+            us.getAllUsers();
         }
 
         if (loggedInUser != null){
@@ -78,5 +83,7 @@ public class Main {
             }
 
         }
+
+
     }
 }

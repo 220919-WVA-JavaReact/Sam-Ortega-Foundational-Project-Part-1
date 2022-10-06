@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 
 public class UserDAOCSV implements UserDAO{
@@ -39,4 +40,11 @@ public class UserDAOCSV implements UserDAO{
     public Users createUser(String first, String last, String email, String password, Boolean isManager) {
         return null;
     }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return null;
+    }
+
+
 }

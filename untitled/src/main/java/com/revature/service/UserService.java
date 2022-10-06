@@ -1,14 +1,17 @@
 package com.revature.service;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOCSV;
+import com.revature.dao.UserDAOPostgres;
 import com.revature.models.Users;
 
+
+import java.util.List;
 import java.util.Scanner;
 
 
 public class UserService {
 
-    UserDAO userD = (UserDAO) new UserDAOCSV();
+    UserDAO userD = (UserDAO) new UserDAOPostgres();
 
     Scanner sc = new Scanner(System.in);
     public Users login(){
@@ -49,6 +52,17 @@ public class UserService {
         Users user = userD.createUser(first, last, email, password, isManager);
 
         return user;
+    }
+
+    public void getAllUsers(){
+        System.out.println("Using the database to return all of our employee objects");
+
+        List<Users> userList = userD.getAllUsers();
+
+        // Print each value of the list
+        for(Users user: userList){
+            System.out.println(user);
+        }
     }
 
 }

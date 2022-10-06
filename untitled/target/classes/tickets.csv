@@ -1,0 +1,6 @@
+id,employee_id,cost,description,status
+1,4,12.02,I would like to submit a ticket,true
+2,2,8.42,Thanks for the reimbursement,true
+3,5,10.17,wait I dont get a refund?,false
+4,7,13.41,This is insane!,false
+5,8,9.00,Here is my ticket,true
