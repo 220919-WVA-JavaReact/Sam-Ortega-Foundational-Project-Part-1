@@ -1,13 +1,13 @@
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
-
+import com.revature.models.Users;
 import java.util.List;
 
 public class ReimbursementDAOCSV implements ReimbursementDAO{
 
     @Override
-    public Reimbursement createReimbursement(int employee_id, float cost, String description, Boolean status) {
+    public Reimbursement createReimbursement(Users user, Float cost, String description, Boolean status) {
         return null;
     }
 
@@ -18,6 +18,11 @@ public class ReimbursementDAOCSV implements ReimbursementDAO{
 
     @Override
     public List<Reimbursement> getTicketByEmployeeId(int employee_id) {
+        return null;
+    }
+
+    @Override
+    public List<Reimbursement> getMyCurrentTickets(Users user) {
         return null;
     }
 

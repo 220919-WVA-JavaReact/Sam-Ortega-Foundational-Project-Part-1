@@ -63,7 +63,7 @@ public class UserDAOPostgres implements UserDAO{
             if((rs = stmt.executeQuery()) != null) {
 
                 rs.next();
-                int id = rs.getInt("employee_id");
+                int id = rs.getInt("id");
                 String receivedFirst = rs.getString("first");
                 String receivedLast = rs.getString("last");
                 String receivedEmail = rs.getString("email");

@@ -19,6 +19,14 @@ public class Users {
         this.isManager = isManager;
     }
 
+    public Users(String first, String last, String email, String password, Boolean isManager) {
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
+        this.isManager = isManager;
+    }
+
     public Users() {
     }
 

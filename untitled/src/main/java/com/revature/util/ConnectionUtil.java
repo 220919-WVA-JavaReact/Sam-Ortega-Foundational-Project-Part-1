@@ -66,7 +66,7 @@ public class ConnectionUtil {
 
         try {
             conn =DriverManager.getConnection(url, username, password);
-            System.out.println("Creating a new connection");
+            System.out.println("Connecting..");
         } catch (SQLException e) {
             System.out.println("Couldn't establish connection");
             e.printStackTrace();

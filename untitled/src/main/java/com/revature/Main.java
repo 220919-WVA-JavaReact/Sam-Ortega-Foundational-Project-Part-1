@@ -17,9 +17,11 @@ public class Main {
         "\n /______________________\\"+
        "\n| ______________________ |"+
         "\n| |                    | |"+
-        "\n| |Press 1 to Login.   | |"+
+        "\n| |1)To Login.         | |"+
         "\n| |                    | |"+
-        "\n| |Press 2 to register.| |"+
+        "\n| |2)To register.      | |"+
+        "\n| |                    | |"+
+        "\n| |3)View all employees| |"+
         "\n| |____________________| |"+
        "\n\\_=______________________/" +
        "\n /\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\" \\"+
@@ -72,10 +74,10 @@ public class Main {
 
             switch (subchoice){
                 case "1":
-                    rs.createTicket();
+                    rs.createTicket(loggedInUser);
                     break;
                 case "2":
-                    rs.assignTicket(loggedInUser.getId());
+                    rs.getMyCurrentTickets(loggedInUser);
                     break;
 
                 default:

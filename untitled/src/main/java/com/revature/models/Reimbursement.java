@@ -5,14 +5,30 @@ import java.util.Objects;
 public class Reimbursement {
 
     private int id;
-    private int employee_id;
+    //    private int employee_id;
+    private Users user;
     private float cost;
     private String description;
     private Boolean status;
 
-    public Reimbursement(int employee_id, float cost, String description, Boolean status) {
+
+    public Reimbursement(int id, Users user, Float cost, String description, Boolean status) {
         this.id = id;
-        this.employee_id = employee_id;
+        this.user = user;
+        this.cost = cost;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Reimbursement(int id, Float cost, String description, Boolean status) {
+        this.id = id;
+        this.cost = cost;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Reimbursement(Users user, Float cost, String description, Boolean status) {
+        this.user = user;
         this.cost = cost;
         this.description = description;
         this.status = status;
@@ -20,12 +36,6 @@ public class Reimbursement {
 
     public Reimbursement() {
     }
-
-    public Reimbursement(int id, int employee_id) {
-        this.id = id;
-        this.employee_id = employee_id;
-    }
-
 
     public int getId() {
         return id;
@@ -35,12 +45,12 @@ public class Reimbursement {
         this.id = id;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public Users getUser() {
+        return user;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public float getCost() {
@@ -68,15 +78,26 @@ public class Reimbursement {
     }
 
     @Override
+    public String toString() {
+        return "Reimbursement{" +
+                "id=" + id +
+                ", user=" + user +
+                ", cost=" + cost +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reimbursement that = (Reimbursement) o;
-        return id == that.id && employee_id == that.employee_id && Float.compare(that.cost, cost) == 0 && description.equals(that.description) && status.equals(that.status);
+        return id == that.id && Float.compare(that.cost, cost) == 0 && Objects.equals(user, that.user) && Objects.equals(description, that.description) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, employee_id, cost, description, status);
+        return Objects.hash(id, user, cost, description, status);
     }
 }

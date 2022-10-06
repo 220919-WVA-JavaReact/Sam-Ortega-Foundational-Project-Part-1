@@ -1,19 +1,21 @@
 package com.revature.service;
 
+import com.revature.dao.ReimbursementDAO;
 import com.revature.dao.ReimbursementDAOCSV;
+import com.revature.dao.ReimbursementDAOPostgres;
 import com.revature.models.Reimbursement;
+import com.revature.models.Users;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ReimbursementService {
 
     Scanner sc = new Scanner(System.in);
 
-    ReimbursementDAOCSV rd = new ReimbursementDAOCSV();
+    ReimbursementDAO rd = new ReimbursementDAOPostgres();
 
-    public void createTicket(){
-        System.out.println("Enter employee ID: ");
-        int employee = Integer.parseInt(sc.nextLine());
+    public Reimbursement createTicket(Users user){
 
         System.out.println("Enter amount: ");
         float cost = Float.parseFloat(sc.nextLine());
@@ -24,15 +26,18 @@ public class ReimbursementService {
         System.out.println("Are you a manager?");
         Boolean isManager = Boolean.valueOf(sc.nextLine());
 
-        rd.createReimbursement(employee, cost, description, isManager);
+        Reimbursement ticket = rd.createReimbursement(user, cost, description, isManager);
+        return ticket;
     }
 
-    public void assignTicket(int employee_id) {
-        System.out.println("Enter ticket number: ");
-        int ticketNumber = sc.nextInt();
-
-        Reimbursement assign = new Reimbursement(ticketNumber, employee_id);
-
-        rd.updateTicket(assign);
+    public void getMyCurrentTickets(Users user){
+        List<Reimbursement> tickets = rd.getMyCurrentTickets(user);
+        if(tickets.size() > 0){
+            for(Reimbursement ticket : tickets){
+                System.out.println(ticket);
+            }
+        }else {
+            System.out.println("You have no pending requests.");
+        }
     }
 }
