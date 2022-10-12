@@ -1,6 +1,7 @@
 com/revature/dao/UserDAOCSV.class
 com/revature/dao/ValidationDAO.class
-com/revature/MyServlet.class
+com/revature/servlets/LoginServlet.class
+com/revature/servlets/MyServlet.class
 com/revature/models/Reimbursement.class
 com/revature/models/Users.class
 com/revature/dao/ReimbursementDAOPostgres.class
