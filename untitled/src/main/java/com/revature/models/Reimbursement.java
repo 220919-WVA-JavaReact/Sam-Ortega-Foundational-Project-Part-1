@@ -9,10 +9,10 @@ public class Reimbursement {
     private Users user;
     private float cost;
     private String description;
-    private Boolean status;
+    private String status;
 
 
-    public Reimbursement(int id, Users user, Float cost, String description, Boolean status) {
+    public Reimbursement(int id, Users user, Float cost, String description, String status) {
         this.id = id;
         this.user = user;
         this.cost = cost;
@@ -20,14 +20,14 @@ public class Reimbursement {
         this.status = status;
     }
 
-    public Reimbursement(int id, Float cost, String description, Boolean status) {
+    public Reimbursement(int id, Float cost, String description, String status) {
         this.id = id;
         this.cost = cost;
         this.description = description;
         this.status = status;
     }
 
-    public Reimbursement(Users user, Float cost, String description, Boolean status) {
+    public Reimbursement(Users user, Float cost, String description, String status) {
         this.user = user;
         this.cost = cost;
         this.description = description;
@@ -69,11 +69,11 @@ public class Reimbursement {
         this.description = description;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

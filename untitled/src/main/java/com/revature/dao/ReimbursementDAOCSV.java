@@ -7,7 +7,7 @@ import java.util.List;
 public class ReimbursementDAOCSV implements ReimbursementDAO{
 
     @Override
-    public Reimbursement createReimbursement(Users user, Float cost, String description, Boolean status) {
+    public Reimbursement createReimbursement(Users user, Float cost, String description, String status) {
         return null;
     }
 

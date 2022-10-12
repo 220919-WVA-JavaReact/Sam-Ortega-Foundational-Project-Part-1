@@ -24,7 +24,7 @@ public class ReimbursementService {
         String description = sc.nextLine();
 
 //        System.out.println("Are you a manager?");
-        Boolean status = false;
+        String status = "pending";
 
         Reimbursement ticket = rd.createReimbursement(user, cost, description, status);
         return ticket;

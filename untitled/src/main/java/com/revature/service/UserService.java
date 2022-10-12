@@ -70,4 +70,18 @@ public class UserService {
         }
     }
 
+    public void employeePromotion(Users loggedInUser){
+        System.out.println("Update employee by email.");
+        String isPromoted = sc.nextLine();
+        Users user = userD.getByEmail(isPromoted);
+
+        if(!user.getEmail().equals(loggedInUser.getEmail())){
+            System.out.println("Update to 1) Manager or 2) Employee?");
+            int isUpdated = sc.nextInt();
+            sc.nextLine();
+
+            userD.updateuser(user, isUpdated);
+        }
+    }
+
 }

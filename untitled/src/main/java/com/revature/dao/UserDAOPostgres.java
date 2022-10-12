@@ -117,5 +117,39 @@ public class UserDAOPostgres implements UserDAO{
         return users;
     }
 
+//    @Override
+//    public Users updateuser(Users user, int isUpdated) {
+//        try(Connection conn = ConnectionUtil.getConnection()){
+//            String sql = "UPDATE employees SET isManager = ? WHERE email = ? RETURNING *";
+//            assert conn != null;
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setString(2, user.getEmail());
+//
+//            if(isUpdated == 1){
+//                stmt.setBoolean(1, true);
+//            }else{
+//                stmt.setBoolean(1, false);
+//            }
+//
+//            ResultSet rs = stmt.executeQuery();
+//            if(rs != null){
+//                rs.next();
+//                int id = rs.getInt("id");
+//                String first = rs.getString(("first"));
+//                String last = rs.getString(("last"));
+//                String email = rs.getString(("email"));
+//                String password = rs.getString(("password"));
+//                Boolean isManager = rs.getBoolean(("isManager"));
+//
+//                user = new Users(id, first, last, email, password, isManager);
+//
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println("Failed to update employee.");
+//        }
+//        return user;
+//    }
+
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ReimbursementDAO {
 
-    Reimbursement createReimbursement(Users user, Float cost, String description, Boolean status);
+    Reimbursement createReimbursement(Users user, Float cost, String description, String status);
 
     List<Reimbursement> getAllReimbursements();
 

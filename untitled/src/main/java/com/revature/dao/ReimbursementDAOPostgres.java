@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ReimbursementDAOPostgres implements ReimbursementDAO{
     @Override
-    public Reimbursement createReimbursement(Users user, Float cost, String description, Boolean status) {
+    public Reimbursement createReimbursement(Users user, Float cost, String description, String status) {
         Reimbursement ticket = new Reimbursement();
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "INSERT INTO tickets (employee_id, cost, description, status) VALUES (?,?,?,?) RETURNING *";
@@ -22,14 +22,14 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
             ps.setInt(1, user.getId());
             ps.setFloat(2,cost);
             ps.setString(3, description);
-            ps.setBoolean(4, status);
+            ps.setString(4, status);
             ResultSet rs;
             if((rs = ps.executeQuery()) != null){
                 rs.next();
                 int id = rs.getInt("id");
                 Float receivedCost = (rs.getFloat("cost"));
                 String receivedDescription = rs.getString("description");
-                Boolean receivedStatus = rs.getBoolean("status");
+                String receivedStatus = rs.getString("status");
                 ticket = new Reimbursement(id, receivedCost, receivedDescription, receivedStatus);
             }
         } catch (SQLException e) {
@@ -61,7 +61,7 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
                     int employee_id = rs.getInt("employee_id");
                     Float cost = rs.getFloat("cost");
                     String description = rs.getString("description");
-                    boolean status = rs.getBoolean("status");
+                    String status = rs.getString("status");
                     Reimbursement ticket = new Reimbursement(user, cost, description, status);
                     tickets.add(ticket);
                 }

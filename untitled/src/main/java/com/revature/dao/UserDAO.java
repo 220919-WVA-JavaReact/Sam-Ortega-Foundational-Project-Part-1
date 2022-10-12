@@ -10,4 +10,6 @@ public interface UserDAO {
     Users createUser(String first, String last, String email, String password, Boolean isManager);
 
     List<Users> getAllUsers();
+
+//    Users updateuser(Users user, int isUpdated);
 }
