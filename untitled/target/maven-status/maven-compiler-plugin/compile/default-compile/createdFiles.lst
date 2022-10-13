@@ -8,8 +8,10 @@ com/revature/dao/ReimbursementDAOPostgres.class
 com/revature/dao/ReimbursementDAOCSV.class
 com/revature/service/UserService.class
 com/revature/dao/ReimbursementDAO.class
+com/revature/servlets/RegisterServlet.class
 com/revature/Main.class
 com/revature/service/ReimbursementService.class
 com/revature/dao/UserDAOPostgres.class
 com/revature/dao/UserDAO.class
 com/revature/util/ConnectionUtil.class
+com/revature/servlets/ReimbursementServlet.class

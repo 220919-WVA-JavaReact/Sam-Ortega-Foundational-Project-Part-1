@@ -30,46 +30,19 @@ public class ConnectionUtil {
             return null;
         }
 
-//        try {
-//            conn =DriverManager.getConnection(url, username, password);
-//            System.out.println("Creating a new connection");
-//        } catch (SQLException e) {
-//            System.out.println("Couldn't establish connection");
-//            e.printStackTrace();
-//        }
-
-
-//        Properties prop = new Properties();
-//
-//        try {
-//            prop.load(new FileReader("src/main/resources/application.properties"));
-//
-//            url = prop.getProperty("url");
-//            username = prop.getProperty("username");
-//            password = prop.getProperty("password");
-//
-//            conn =DriverManager.getConnection(url, username, password);
-//            System.out.println("Creating a new connection");
-//
-//        } catch (IOException e) {
-//            System.out.println("Could not find properties file");
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            System.out.println("Could not establish connection!");
-//            e.printStackTrace();
-//        }
-
-
         String url = System.getenv("url");
         String username = System.getenv("username");
         String password = System.getenv("password");
 
         try {
+            Class.forName("org.postgresql.Driver");
             conn =DriverManager.getConnection(url, username, password);
             System.out.println("Connecting..");
         } catch (SQLException e) {
             System.out.println("Couldn't establish connection");
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         return conn;

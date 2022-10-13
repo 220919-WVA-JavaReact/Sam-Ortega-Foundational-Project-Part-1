@@ -117,6 +117,28 @@ public class UserDAOPostgres implements UserDAO{
         return users;
     }
 
+    @Override
+    public boolean checkLogin(String email, String password) {
+        Connection conn = ConnectionUtil.getConnection();
+        boolean status = false;
+
+        Users user = null;
+        try {
+
+            String sql = "SELECT * FROM employees WHERE email = ? and password = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+
+            ResultSet result = stmt.executeQuery();
+            status=result.next();
+
+        } catch (SQLException e) {
+            System.out.println("cannot login at the moment.");
+        }
+        return status;
+    }
+
 //    @Override
 //    public Users updateuser(Users user, int isUpdated) {
 //        try(Connection conn = ConnectionUtil.getConnection()){

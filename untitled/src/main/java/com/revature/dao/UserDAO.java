@@ -11,5 +11,6 @@ public interface UserDAO {
 
     List<Users> getAllUsers();
 
+    boolean checkLogin (String email, String password);
 //    Users updateuser(Users user, int isUpdated);
 }
