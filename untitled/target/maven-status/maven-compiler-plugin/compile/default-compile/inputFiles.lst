@@ -12,7 +12,6 @@
 /home/sam/foundational-project/untitled/src/main/java/com/revature/dao/ReimbursementDAOCSV.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/service/ReimbursementService.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/util/ConnectionUtil.java
-/home/sam/foundational-project/untitled/src/main/java/com/revature/dao/UserDAOCSV.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/servlets/RegisterServlet.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/dao/ValidationDAO.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/servlets/MyServlet.java

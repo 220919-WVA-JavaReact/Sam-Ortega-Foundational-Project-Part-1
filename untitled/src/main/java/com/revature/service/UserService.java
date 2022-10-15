@@ -32,7 +32,6 @@ public class UserService {
     }
 
     public Users register(String first, String last, String email, String password, Boolean isManager){
-
         return userD.createUser(first, last, email, password, isManager);
     }
 

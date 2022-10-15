@@ -9,6 +9,8 @@ public interface UserDAO {
 
     Users createUser(String first, String last, String email, String password, Boolean isManager);
 
+    boolean emailExists(String email);
+
     List<Users> getAllUsers();
 
     boolean checkLogin (String email, String password);

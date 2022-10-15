@@ -43,7 +43,7 @@ public class UserDAOPostgres implements UserDAO{
     }
 
     @Override
-    public Users createUser(String first, String last, String email, String password, Boolean isManager) {
+    public Users createUser(String first, String last, String email, String password, Boolean isManager) throws NullPointerException {
 
         Users user = new Users();
 
@@ -59,9 +59,7 @@ public class UserDAOPostgres implements UserDAO{
             stmt.setBoolean(5, isManager);
 
             ResultSet rs;
-
             if((rs = stmt.executeQuery()) != null) {
-
                 rs.next();
                 int id = rs.getInt("id");
                 String receivedFirst = rs.getString("first");
@@ -74,13 +72,36 @@ public class UserDAOPostgres implements UserDAO{
 
             }
 
+
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Couldn't register user to the database");
+            return null;
+//            e.printStackTrace();
+//
+//            System.out.println("Couldn't register user to the database");
+
         }
 
 
         return user;
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM employees WHERE email = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, email);
+
+
+            if((stmt.executeQuery()) != null){
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 
     @Override
