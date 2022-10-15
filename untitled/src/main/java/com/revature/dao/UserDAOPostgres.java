@@ -48,7 +48,7 @@ public class UserDAOPostgres implements UserDAO{
         Users user = new Users();
 
         try(Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "INSERT INTO employees (\"first\", \"last\", email, \"password\", isManager) VALUES (?,?,?,?,?) RETURNING *";
+            String sql = "INSERT INTO employees (first, last, email, password, isManager) VALUES (?,?,?,?,?) RETURNING *";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -70,7 +70,7 @@ public class UserDAOPostgres implements UserDAO{
                 String receivedPassword = rs.getString("password");
                 Boolean receivedManager = rs.getBoolean("isManager");
 
-                user = new Users(id, receivedFirst,receivedLast,receivedEmail,receivedPassword,receivedManager);
+                user = new Users(id, receivedFirst,receivedLast,receivedEmail,receivedPassword, receivedManager);
 
             }
 

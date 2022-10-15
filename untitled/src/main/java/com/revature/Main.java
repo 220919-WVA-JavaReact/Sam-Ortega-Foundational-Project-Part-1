@@ -48,7 +48,7 @@ public class Main {
 
             // AT THIS POINT we would call out TeacherService Class to handle the logic for signing in!
 
-            loggedInUser = us.login();
+//            loggedInUser = us.login();
 
         } else if (choice.equals("2")){
             // This is where we get registration information
@@ -61,7 +61,7 @@ public class Main {
 //            System.out.println("Please enter your password");
 //            String password = sc.nextLine();
 
-            loggedInUser = us.register();
+//            loggedInUser = us.register();
 
             // Now that we have all the information we need we can start talking to our TeacherService class to handle this info
         }else if (choice.equals("3")){

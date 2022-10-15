@@ -1,5 +1,7 @@
 package com.revature.util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -30,22 +32,39 @@ public class ConnectionUtil {
             return null;
         }
 
-        String url = System.getenv("url");
-        String username = System.getenv("username");
-        String password = System.getenv("password");
+//        String url = System.getenv("url");
+//        String username = System.getenv("username");
+//        String password = System.getenv("password");
+        String url = "";
+        String username = "";
+        String password = "";
+        Properties prop = new Properties();
 
         try {
-            Class.forName("org.postgresql.Driver");
-            conn =DriverManager.getConnection(url, username, password);
-            System.out.println("Connecting..");
-        } catch (SQLException e) {
+            prop.load(new FileReader("\\\\wsl.localhost\\Ubuntu-20.04\\home\\sam\\foundational-project\\untitled\\src\\main\\resources\\application.properties"));
+            url = prop.getProperty("url");
+            username = prop.getProperty("username");
+            password = prop.getProperty("password");
+            conn = DriverManager.getConnection(url, username, password);
+        }
+        catch (SQLException e) {
             System.out.println("Couldn't establish connection");
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+
         return conn;
+    }
+
+    static{
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Failed to load PostgreSQL Driver");
+            throw new RuntimeException(e);
+        }
     }
 
 }

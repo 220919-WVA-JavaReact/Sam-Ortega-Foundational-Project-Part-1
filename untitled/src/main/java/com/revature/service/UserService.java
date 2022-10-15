@@ -11,22 +11,18 @@ import java.util.Scanner;
 
 
 public class UserService {
+    public UserService() {
+        System.out.println("UserService Initialized");
+    }
 
     UserDAO userD = (UserDAO) new UserDAOPostgres();
 
     Scanner sc = new Scanner(System.in);
-    public Users login(){
-
-        System.out.println("Please enter your email");
-        String email = sc.nextLine();
-        System.out.println("Please enter your password");
-        String password = sc.nextLine();
-
-        Users user = userD.getByEmail(email);
+    public Users login(String email, String password){
+    Users user = userD.getByEmail(email);
 
         if (user.getPassword().equals(password)) {
-            System.out.println("Welcome Back.");
-            System.out.println(user);
+            System.out.println("Welcome Back " + user.getFirst());
             return user;
         } else {
             System.out.println("You have not created an account with us.");
@@ -34,29 +30,9 @@ public class UserService {
         }
     }
 
-    public Users register(){
-        System.out.println("Please enter your First Name");
-        String first = sc.nextLine();
-        System.out.println("Please enter your Last Name");
-        String last = sc.nextLine();
-        String email = null;
-        Boolean validate = false;
-        while (!validate){
-            System.out.println("Please enter your email");
-            email = sc.nextLine();
-            validate = ValidationDAO.validateEmail(email);
-        }
-        System.out.println("Please enter your password");
-        String password = sc.nextLine();
-        Boolean isManager = false;
+    public Users register(String first, String last, String email, String password, Boolean isManager){
 
-        // Now we've taken in the information regarding the actual user we're trying to create and now we need to send
-        // that info to the DAO
-
-        // Now that we created the DAO method we just need to call it with the info provided
-        Users user = userD.createUser(first, last, email, password, isManager);
-
-        return user;
+        return userD.createUser(first, last, email, password, isManager);
     }
 
     public void getAllUsers(){
@@ -69,6 +45,8 @@ public class UserService {
             System.out.println(user);
         }
     }
+
+
 
 //    public void employeePromotion(Users loggedInUser){
 //        System.out.println("Update employee by email.");
