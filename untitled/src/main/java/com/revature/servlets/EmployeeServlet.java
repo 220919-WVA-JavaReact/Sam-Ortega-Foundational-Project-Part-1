@@ -28,13 +28,20 @@ public class EmployeeServlet extends HttpServlet {
             Users user = mapper.readValue(req.getInputStream(), Users.class); /*model.class*/
             Users use = us.login(user.getEmail(), user.getPassword());
             String respPayload = mapper.writeValueAsString(use);
-            resp.getWriter().write(respPayload);
+            resp.getWriter().write("<h1>");
+            resp.getWriter().write("Welcome back " +use.getFirst() + "!");
+            resp.getWriter().write("</h1>");
+
+
         } else if (req.getParameter("action").equals("register")) {
             Users employee = mapper.readValue(req.getInputStream(), Users.class);
             Users emp = us.register(employee.getFirst(), employee.getLast(), employee.getEmail(), employee.getPassword(), employee.getManager());
             String respPayload = mapper.writeValueAsString(emp);
-            resp.getWriter().write(respPayload);
-            resp.setStatus(204);
+//            resp.getWriter().write(respPayload);
+            resp.setStatus(201);
+            resp.getWriter().write("<h1>");
+            resp.getWriter().write(emp.getFirst() + " Registered Successfully!");
+            resp.getWriter().write("</h1>");
         }
     }
 

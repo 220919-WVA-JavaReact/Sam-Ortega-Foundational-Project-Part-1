@@ -23,6 +23,7 @@ public class UserService {
 
         if (user.getPassword().equals(password)) {
             System.out.println("Welcome Back " + user.getFirst());
+
             return user;
         } else {
             System.out.println("You have not created an account with us.");
