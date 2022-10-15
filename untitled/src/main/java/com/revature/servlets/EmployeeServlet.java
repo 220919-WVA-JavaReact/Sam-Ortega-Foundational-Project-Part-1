@@ -28,11 +28,18 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("action").equals("login")){
-            Users user = mapper.readValue(req.getInputStream(), Users.class); /*model.class*/
+            Users user = mapper.readValue(req.getInputStream(), Users.class);
             Users use = us.login(user.getEmail(), user.getPassword());
             String respPayload = mapper.writeValueAsString(use);
-//            resp.getWriter().write("<h1>");
-            resp.getWriter().write("Welcome back " +use.getFirst() + "!");
+            if(respPayload.equals("null")){
+                resp.getWriter().write("Wrong Credentials - Try Again!");
+
+            }else{
+                resp.getWriter().write("Welcome back " +use.getFirst() + "!");
+
+            }
+            //            resp.getWriter().write("<h1>");
+
 //            resp.getWriter().write("</h1>");
 
 

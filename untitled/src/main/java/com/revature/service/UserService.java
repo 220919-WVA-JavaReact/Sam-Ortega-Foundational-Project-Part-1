@@ -21,13 +21,14 @@ public class UserService {
     public Users login(String email, String password){
     Users user = userD.getByEmail(email);
 
-        if (user.getPassword().equals(password)) {
-            System.out.println("Welcome Back " + user.getFirst());
+        if (!user.getPassword().equals(password)) {
+//            System.out.println("You have not created an account with us.");
+            return null;
+        } else {
+
+//            System.out.println("Welcome Back " + user.getFirst());
 
             return user;
-        } else {
-            System.out.println("You have not created an account with us.");
-            return null;
         }
     }
 

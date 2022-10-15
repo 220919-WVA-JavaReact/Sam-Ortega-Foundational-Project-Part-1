@@ -25,7 +25,6 @@ public class UserDAOPostgres implements UserDAO{
             if ((rs = stmt.executeQuery()) != null){
 
                 rs.next();
-
                 int id = rs.getInt("id");
                 String first = rs.getString("first");
                 String last = rs.getString("last");
@@ -38,6 +37,8 @@ public class UserDAOPostgres implements UserDAO{
             }
         }catch(SQLException e){
             e.printStackTrace();
+            return null;
+
         }
         return user;
     }
