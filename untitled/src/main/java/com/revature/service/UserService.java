@@ -22,12 +22,8 @@ public class UserService {
     Users user = userD.getByEmail(email);
 
         if (!user.getPassword().equals(password)) {
-//            System.out.println("You have not created an account with us.");
             return null;
         } else {
-
-//            System.out.println("Welcome Back " + user.getFirst());
-
             return user;
         }
     }

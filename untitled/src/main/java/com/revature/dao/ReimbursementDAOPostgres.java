@@ -14,29 +14,40 @@ import java.util.List;
 
 public class ReimbursementDAOPostgres implements ReimbursementDAO{
     @Override
-    public Reimbursement createReimbursement(Users user, Float cost, String description, String status) {
-        Reimbursement ticket = new Reimbursement();
+    public boolean createReimbursement(Reimbursement ticket,Users user) {
+//        Reimbursement ticket = new Reimbursement();
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "INSERT INTO tickets (employee_id, cost, description, status) VALUES (?,?,?,?) RETURNING *";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, user.getId());
-            ps.setFloat(2,cost);
-            ps.setString(3, description);
-            ps.setString(4, status);
-            ResultSet rs;
-            if((rs = ps.executeQuery()) != null){
-                rs.next();
-                int id = rs.getInt("id");
-                Float receivedCost = (rs.getFloat("cost"));
-                String receivedDescription = rs.getString("description");
-                String receivedStatus = rs.getString("status");
-                ticket = new Reimbursement(id, receivedCost, receivedDescription, receivedStatus);
+            ps.setFloat(2,ticket.getCost());
+            ps.setString(3, ticket.getDescription());
+            ps.setString(4, ticket.getStatus());
+
+            int updated = ps.executeUpdate();
+
+            if(updated == 1){
+                return true;
             }
+
+//            if((rs = ps.executeQuery()) != null){
+//                rs.next();
+//                int id = rs.getInt("id");
+//                Float receivedCost = (rs.getFloat("cost"));
+//                String receivedDescription = rs.getString("description");
+//                String receivedStatus = rs.getString("status");
+//                ticket = new Reimbursement(id, receivedCost, receivedDescription, receivedStatus);
+//            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ticket;
+        return false;
     }
+
+//    @Override
+//    public boolean createReimbursement(Reimbursement ticket, Users user) {
+//        return false;
+//    }
 
     @Override
     public List<Reimbursement> getAllReimbursements() {

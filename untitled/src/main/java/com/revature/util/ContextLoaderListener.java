@@ -8,13 +8,7 @@ public class ContextLoaderListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("[LOG] - The servlet context was initialized at: " + LocalDateTime.now());
-//        ObjectMapper mapper = new ObjectMapper();
-//        EmployeeServlet es = new EmployeeServlet(mapper);
-//        ServletContext context = sce.getServletContext();
-//        ServletRegistration.Dynamic registeredServlet = context.addServlet("EmployeeServlet", es);
-//        registeredServlet.addMapping("/employees");
-//        registeredServlet.setLoadOnStartup(3);
-//        registeredServlet.setInitParameter("employee-servlet-key", "user-servlet-value");
+
     }
 
     @Override

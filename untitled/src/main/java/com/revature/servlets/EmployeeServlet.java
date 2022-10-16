@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -27,6 +28,7 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session;
         if (req.getParameter("action").equals("login")){
             Users user = mapper.readValue(req.getInputStream(), Users.class);
             Users use = us.login(user.getEmail(), user.getPassword());
@@ -35,13 +37,12 @@ public class EmployeeServlet extends HttpServlet {
                 resp.getWriter().write("Wrong Credentials - Try Again!");
 
             }else{
+                session = req.getSession();
+                session.setAttribute("auth-user", use);
+                resp.setStatus(200);
                 resp.getWriter().write("Welcome back " +use.getFirst() + "!");
 
             }
-            //            resp.getWriter().write("<h1>");
-
-//            resp.getWriter().write("</h1>");
-
 
         } else if (req.getParameter("action").equals("register")) {
             Users employee = mapper.readValue(req.getInputStream(), Users.class);
@@ -55,18 +56,6 @@ public class EmployeeServlet extends HttpServlet {
                     resp.setStatus(400);
                     resp.getWriter().write("That EMAIL has already been taken!");
                 }
-
-//                resp.getWriter().write(emp.getFirst());
-//                resp.setStatus(201);
-//                resp.getWriter().write("<h1>");
-
-//                resp.getWriter().write("</h1>");
-//            else{
-//                resp.setStatus(400);
-////                resp.getWriter().write("<h1>");
-//                resp.getWriter().write("Email has already been taken!");
-////                resp.getWriter().write("</h1>");
-//            }
         }
     }
 
@@ -77,6 +66,10 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        HttpSession session = req.getSession(false);
+        if (session != null) {
+            session.invalidate();
+            resp.getWriter().write("session ended");
+        }
     }
 }

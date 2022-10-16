@@ -74,7 +74,7 @@ public class Main {
 
             switch (subchoice){
                 case "1":
-                    rs.createTicket(loggedInUser);
+//                    rs.createTicket(loggedInUser);
                     break;
                 case "2":
                     rs.getMyCurrentTickets(loggedInUser);

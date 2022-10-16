@@ -1,7 +1,6 @@
 package com.revature.service;
 
 import com.revature.dao.ReimbursementDAO;
-import com.revature.dao.ReimbursementDAOCSV;
 import com.revature.dao.ReimbursementDAOPostgres;
 import com.revature.models.Reimbursement;
 import com.revature.models.Users;
@@ -15,18 +14,19 @@ public class ReimbursementService {
 
     ReimbursementDAO rd = new ReimbursementDAOPostgres();
 
-    public Reimbursement createTicket(Users user){
+    public Reimbursement createTicket(float amount, String description, String status, Users user){
 
-        System.out.println("Enter amount: ");
-        float cost = Float.parseFloat(sc.nextLine());
-
-        System.out.println("Enter description: ");
-        String description = sc.nextLine();
+//        System.out.println("Enter amount: ");
+//        float cost = Float.parseFloat(sc.nextLine());
+//
+//        System.out.println("Enter description: ");
+//        String description = sc.nextLine();
 
 //        System.out.println("Are you a manager?");
-        String status = "pending";
-
-        Reimbursement ticket = rd.createReimbursement(user, cost, description, status);
+//        String status = "pending";
+        Reimbursement ticket = null;
+        ticket = new Reimbursement(amount, description, status, user);
+        boolean didWork = rd.createReimbursement(ticket, user);
         return ticket;
     }
 

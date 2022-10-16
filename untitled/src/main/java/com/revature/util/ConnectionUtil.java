@@ -32,9 +32,6 @@ public class ConnectionUtil {
             return null;
         }
 
-//        String url = System.getenv("url");
-//        String username = System.getenv("username");
-//        String password = System.getenv("password");
         String url = "";
         String username = "";
         String password = "";
