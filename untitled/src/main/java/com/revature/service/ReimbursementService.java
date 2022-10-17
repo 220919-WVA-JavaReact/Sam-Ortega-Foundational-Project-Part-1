@@ -10,11 +10,15 @@ import java.util.Scanner;
 
 public class ReimbursementService {
 
+    public ReimbursementService(){
+        System.out.println("Reimbursements Service Initialized!");
+    }
+
     Scanner sc = new Scanner(System.in);
 
     ReimbursementDAO rd = new ReimbursementDAOPostgres();
 
-    public Reimbursement createTicket(float amount, String description, String status, Users user){
+    public boolean createTicket(float amount, String description, Users user){
 
 //        System.out.println("Enter amount: ");
 //        float cost = Float.parseFloat(sc.nextLine());
@@ -25,9 +29,10 @@ public class ReimbursementService {
 //        System.out.println("Are you a manager?");
 //        String status = "pending";
         Reimbursement ticket = null;
-        ticket = new Reimbursement(amount, description, status, user);
+        ticket = new Reimbursement(user, amount, description);
         boolean didWork = rd.createReimbursement(ticket, user);
-        return ticket;
+        System.out.println(didWork);
+        return didWork;
     }
 
     public void getMyCurrentTickets(Users user){

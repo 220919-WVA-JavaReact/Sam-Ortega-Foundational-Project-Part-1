@@ -17,16 +17,18 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
     public boolean createReimbursement(Reimbursement ticket,Users user) {
 //        Reimbursement ticket = new Reimbursement();
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "INSERT INTO tickets (employee_id, cost, description, status) VALUES (?,?,?,?) RETURNING *";
+            String sql = "INSERT INTO tickets (employee_id, cost, description) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setFloat(2,ticket.getCost());
             ps.setString(3, ticket.getDescription());
-            ps.setString(4, ticket.getStatus());
+//            ps.setString(4, "");
 
             int updated = ps.executeUpdate();
+            System.out.println(updated);
 
             if(updated == 1){
+
                 return true;
             }
 

@@ -40,6 +40,20 @@ public class Reimbursement {
     public Reimbursement(float amount, String description, String status, Users user) {
     }
 
+//    public Reimbursement(float amount, String description, int id) {
+//    }
+
+    public Reimbursement(Users user, float cost, String description) {
+        this.user = user;
+        this.cost = cost;
+        this.description = description;
+    }
+
+    public Reimbursement(float cost, String description) {
+        this.cost = cost;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

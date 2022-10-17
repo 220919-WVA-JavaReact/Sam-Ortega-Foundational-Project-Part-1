@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.ReimbursementDAOPostgres;
 import com.revature.models.Reimbursement;
 import com.revature.models.Users;
+import com.revature.service.ReimbursementService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 @WebServlet("/tickets")
 public class ReimbursementServlet extends HttpServlet {
+    ReimbursementService rs = new ReimbursementService();
     ReimbursementDAOPostgres rd = new ReimbursementDAOPostgres();
     ObjectMapper mapper = new ObjectMapper();
 
@@ -43,9 +45,18 @@ public class ReimbursementServlet extends HttpServlet {
 
             Reimbursement ticket = mapper.readValue(req.getInputStream(), Reimbursement.class);
             resp.setStatus(200);
-            float cost = (float)ticket.getCost();
-            String description = (String) ticket.getDescription();
-            boolean succeeded = rd.createReimbursement(cost, description, loggedInUser);
+            float cost = ticket.getCost();
+            String description = ticket.getDescription();
+            boolean succeeded = rs.createTicket(cost, description, loggedInUser);
+            System.out.println(succeeded);
+
+            if(succeeded){
+                resp.setStatus(200);
+                resp.getWriter().write("Ticket submission successful!");
+            }else{
+                resp.setStatus(400);
+                resp.getWriter().write("Unsuccessful. Please try again.");
+            }
         }
     }
 
