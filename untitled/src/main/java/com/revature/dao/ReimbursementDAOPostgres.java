@@ -25,7 +25,7 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
 //            ps.setString(4, "");
 
             int updated = ps.executeUpdate();
-            System.out.println(updated);
+//            System.out.println(updated);
 
             if(updated == 1){
 

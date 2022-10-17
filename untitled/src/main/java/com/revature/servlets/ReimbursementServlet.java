@@ -41,16 +41,18 @@ public class ReimbursementServlet extends HttpServlet {
             return;
         }else{
             Users loggedInUser = (Users) session.getAttribute("auth-user");
-            resp.getWriter().write(mapper.writeValueAsString(loggedInUser));
+//            resp.getWriter().write(mapper.writeValueAsString(loggedInUser));
 
             Reimbursement ticket = mapper.readValue(req.getInputStream(), Reimbursement.class);
-            resp.setStatus(200);
+            resp.setStatus(201);
             float cost = ticket.getCost();
             String description = ticket.getDescription();
-            boolean succeeded = rs.createTicket(cost, description, loggedInUser);
-            System.out.println(succeeded);
+//            boolean succeeded = rs.createTicket(cost, description, loggedInUser);
+            boolean succeeded;
+//            System.out.println(succeeded);
 
-            if(succeeded){
+            if(cost != 0 && !description.equals("")){
+                succeeded = rs.createTicket(cost, description, loggedInUser);
                 resp.setStatus(200);
                 resp.getWriter().write("Ticket submission successful!");
             }else{
