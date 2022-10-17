@@ -41,7 +41,7 @@ public class EmployeeServlet extends HttpServlet {
                 session.setAttribute("auth-user", use);
                 resp.setStatus(200);
                 resp.getWriter().write("Welcome back " +use.getFirst() + "!");
-
+//                resp.getWriter().write(respPayload);
             }
 
         } else if (req.getParameter("action").equals("register")) {

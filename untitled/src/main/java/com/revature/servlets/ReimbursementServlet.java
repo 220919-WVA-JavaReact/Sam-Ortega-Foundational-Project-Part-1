@@ -53,7 +53,7 @@ public class ReimbursementServlet extends HttpServlet {
 
             if(cost != 0 && !description.equals("")){
                 succeeded = rs.createTicket(cost, description, loggedInUser);
-                resp.setStatus(200);
+                resp.setStatus(201);
                 resp.getWriter().write("Ticket submission successful!");
             }else{
                 resp.setStatus(400);
