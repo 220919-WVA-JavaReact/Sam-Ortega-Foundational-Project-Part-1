@@ -35,14 +35,16 @@ public class ReimbursementService {
         return didWork;
     }
 
-    public void getMyCurrentTickets(Users user){
+    public List<Reimbursement> getMyCurrentTickets(Users user){
         List<Reimbursement> tickets = rd.getMyCurrentTickets(user);
-        if(tickets.size() > 0){
-            for(Reimbursement ticket : tickets){
-                System.out.println(ticket);
-            }
-        }else {
-            System.out.println("You have no pending requests.");
-        }
+
+//        if(tickets.size() > 0){
+//            for(Reimbursement ticket : tickets){
+//                System.out.println(ticket);
+//            }
+//        }else {
+//            System.out.println("You have no pending requests.");
+//        }
+        return tickets;
     }
 }
