@@ -13,3 +13,4 @@ com/revature/dao/UserDAOPostgres.class
 com/revature/dao/UserDAO.class
 com/revature/util/ConnectionUtil.class
 com/revature/servlets/ReimbursementServlet.class
+com/revature/servlets/ManagerServlet.class

@@ -5,6 +5,7 @@ import com.revature.dao.ReimbursementDAOPostgres;
 import com.revature.models.Reimbursement;
 import com.revature.models.Users;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -46,5 +47,30 @@ public class ReimbursementService {
 //            System.out.println("You have no pending requests.");
 //        }
         return tickets;
+    }
+
+    public List<Reimbursement> getAllPendingTickets(){
+        Users user = new Users();
+        List<Reimbursement> tickets = rd.getAllPending(user);
+
+//        if(tickets.size() > 0){
+//            for(Reimbursement ticket : tickets){
+//                System.out.println(ticket);
+//            }
+//        }else {
+//            System.out.println("You have no pending requests.");
+//        }
+        return tickets;
+    }
+
+    public boolean updateTickets(Reimbursement ticket, String status){
+//        Reimbursement ticket = new Reimbursement(id);
+        System.out.println("ticket in reimb service "+ticket);
+        boolean updated = rd.updateTicket(ticket, status);
+        System.out.println("int reimbursement service " + updated);
+        if(updated){
+            return true;
+        }
+        return false;
     }
 }

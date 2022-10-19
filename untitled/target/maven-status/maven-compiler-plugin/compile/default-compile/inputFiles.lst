@@ -9,6 +9,7 @@
 /home/sam/foundational-project/untitled/src/main/java/com/revature/dao/UserDAOPostgres.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/servlets/LoginServlet.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/service/UserService.java
+/home/sam/foundational-project/untitled/src/main/java/com/revature/servlets/ManagerServlet.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/service/ReimbursementService.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/util/ConnectionUtil.java
 /home/sam/foundational-project/untitled/src/main/java/com/revature/dao/ValidationDAO.java

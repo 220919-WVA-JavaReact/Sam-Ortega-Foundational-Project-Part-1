@@ -27,6 +27,7 @@ public class Reimbursement {
         this.status = status;
     }
 
+
     public Reimbursement(Users user, Float cost, String description, String status) {
         this.user = user;
         this.cost = cost;
@@ -53,6 +54,18 @@ public class Reimbursement {
         this.cost = cost;
         this.description = description;
     }
+
+    public Reimbursement(Float cost, String description, String status) {
+    }
+
+    public Reimbursement(int id, String status) {
+        this.id = id;
+        this.status = status;
+    }
+
+    public Reimbursement(int id) {
+    }
+
 
     public int getId() {
         return id;

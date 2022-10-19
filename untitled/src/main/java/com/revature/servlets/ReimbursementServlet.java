@@ -51,11 +51,13 @@ public class ReimbursementServlet extends HttpServlet {
             List<Reimbursement> tickets = rs.getMyCurrentTickets(loggedInEmployee);
             if (tickets != null) {
                 resp.setStatus(200);
-
+                resp.getWriter().write(mapper.writeValueAsString(loggedInEmployee.getFirst()+"'s" + " tickets!"));
+                resp.getWriter().write(mapper.writeValueAsString("<br>"));
                 for(Reimbursement ticket: tickets){
-                    resp.getWriter().write(mapper.writeValueAsString(ticket.getCost()) + ", ");
-                    resp.getWriter().write(mapper.writeValueAsString(ticket.getDescription()) + ", ");
-                    resp.getWriter().write(mapper.writeValueAsString(ticket.getStatus()) + ", ");
+
+                    resp.getWriter().write(mapper.writeValueAsString("Cost: "+ticket.getCost())+" ");
+                    resp.getWriter().write(mapper.writeValueAsString("Description: "+ticket.getDescription())+" ");
+                    resp.getWriter().write(mapper.writeValueAsString("Status: "+ticket.getStatus()) + ", ");
                     resp.getWriter().write("<br>");
                 }
 //                resp.getWriter().write(mapper.writeValueAsString(ticket.getStatus()));
