@@ -99,11 +99,12 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
             ResultSet rs;
             if ((rs = ps.executeQuery()) != null) {
                 while (rs.next()) {
+                    int id = rs.getInt("id");
                     int employee_id = rs.getInt("employee_id");
                     Float cost = rs.getFloat("cost");
                     String description = rs.getString("description");
                     String status = rs.getString("status");
-                    Reimbursement ticket = new Reimbursement(user, cost, description, status);
+                    Reimbursement ticket = new Reimbursement(id, user, cost, description, status);
                     tickets.add(ticket);
                 }
             }
@@ -116,18 +117,19 @@ public class ReimbursementDAOPostgres implements ReimbursementDAO{
 
     @Override
     public Boolean updateTicket(Reimbursement ticket, String answer) {
+
         try (Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "UPDATE tickets SET status = ? WHERE id = ?";
+            String sql = "UPDATE tickets SET status = ? WHERE id = ? AND status = 'pending'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, answer);
             ps.setInt(2, ticket.getId());
 
-            System.out.println("ticket in dao " +ticket);
-            System.out.println("answer in dao "+answer);
+//            System.out.println("ticket in dao " +ticket);
+//            System.out.println("answer in dao "+answer);
 
             int result = ps.executeUpdate();
 
-            System.out.println("in the dao " + result);
+//            System.out.println("in the dao " + result);
             if (result == 1) {
 
                 return true;

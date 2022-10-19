@@ -65,9 +65,9 @@ public class ReimbursementService {
 
     public boolean updateTickets(Reimbursement ticket, String status){
 //        Reimbursement ticket = new Reimbursement(id);
-        System.out.println("ticket in reimb service "+ticket);
+//        System.out.println("ticket in reimb service "+ticket);
         boolean updated = rd.updateTicket(ticket, status);
-        System.out.println("int reimbursement service " + updated);
+//        System.out.println("int reimbursement service " + updated);
         if(updated){
             return true;
         }

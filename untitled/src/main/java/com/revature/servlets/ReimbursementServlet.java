@@ -55,6 +55,7 @@ public class ReimbursementServlet extends HttpServlet {
                 resp.getWriter().write(mapper.writeValueAsString("<br>"));
                 for(Reimbursement ticket: tickets){
 
+                    resp.getWriter().write(mapper.writeValueAsString("Ticket ID: "+ticket.getId())+" ");
                     resp.getWriter().write(mapper.writeValueAsString("Cost: "+ticket.getCost())+" ");
                     resp.getWriter().write(mapper.writeValueAsString("Description: "+ticket.getDescription())+" ");
                     resp.getWriter().write(mapper.writeValueAsString("Status: "+ticket.getStatus()) + ", ");

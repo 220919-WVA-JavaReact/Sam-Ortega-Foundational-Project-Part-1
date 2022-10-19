@@ -69,7 +69,7 @@ public class EmployeeServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         if (session != null) {
             session.invalidate();
-            resp.getWriter().write("session ended");
+            resp.getWriter().write("You have been logged off!");
         }
     }
 }
