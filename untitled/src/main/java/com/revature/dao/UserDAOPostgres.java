@@ -23,16 +23,18 @@ public class UserDAOPostgres implements UserDAO{
             ResultSet rs;
 
             if ((rs = stmt.executeQuery()) != null){
+                if(rs.next()){
+                    int id = rs.getInt("id");
+                    String first = rs.getString("first");
+                    String last = rs.getString("last");
+                    String receivedEmail = rs.getString("email");
+                    String password = rs.getString("password");
+                    Boolean isManager = rs.getBoolean("isManager");
 
-                rs.next();
-                int id = rs.getInt("id");
-                String first = rs.getString("first");
-                String last = rs.getString("last");
-                String receivedEmail = rs.getString("email");
-                String password = rs.getString("password");
-                Boolean isManager = rs.getBoolean("isManager");
+                    user = new Users(id, first, last, receivedEmail,password, isManager);
+                }
 
-                user = new Users(id, first, last, receivedEmail,password, isManager);
+
 
             }
         }catch(SQLException e){

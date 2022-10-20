@@ -59,6 +59,7 @@ public class ManagerServlet extends HttpServlet {
                 }
 //                resp.getWriter().write(mapper.writeValueAsString(ticket.getStatus()));
             }else{
+                resp.setStatus(401);
                 resp.getWriter().write("Must be a Manager to view all employee's pending tickets.");
             }
 

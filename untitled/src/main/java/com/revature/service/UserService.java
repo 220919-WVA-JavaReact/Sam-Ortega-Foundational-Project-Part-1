@@ -20,8 +20,9 @@ public class UserService {
     Scanner sc = new Scanner(System.in);
     public Users login(String email, String password){
     Users user = userD.getByEmail(email);
-
-        if (!user.getPassword().equals(password)) {
+//        System.out.println(email);
+        System.out.println(user.getEmail());
+        if (!password.equals(user.getPassword())) {
             return null;
         } else {
             return user;

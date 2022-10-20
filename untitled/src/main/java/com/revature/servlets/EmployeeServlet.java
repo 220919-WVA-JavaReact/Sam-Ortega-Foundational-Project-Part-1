@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @WebServlet("/employees")
 public class EmployeeServlet extends HttpServlet {
-    UserDAO ud = (UserDAO) new UserDAOPostgres();
+    UserDAO ud = new UserDAOPostgres();
     UserService us = new UserService();
     ObjectMapper mapper = new ObjectMapper();
 
@@ -34,6 +34,7 @@ public class EmployeeServlet extends HttpServlet {
             Users use = us.login(user.getEmail(), user.getPassword());
             String respPayload = mapper.writeValueAsString(use);
             if(respPayload.equals("null")){
+                resp.setStatus(400);
                 resp.getWriter().write("Wrong Credentials - Try Again!");
 
             }else{
