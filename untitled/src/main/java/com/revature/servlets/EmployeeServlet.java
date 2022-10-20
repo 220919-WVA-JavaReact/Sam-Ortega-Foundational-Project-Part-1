@@ -54,7 +54,7 @@ public class EmployeeServlet extends HttpServlet {
                     resp.setStatus(201);
                     resp.getWriter().write(emp.getFirst() + " Registered Successfully!");
                 }else{
-                    resp.setStatus(400);
+                    resp.setStatus(409);
                     resp.getWriter().write("That EMAIL has already been taken!");
                 }
         }
